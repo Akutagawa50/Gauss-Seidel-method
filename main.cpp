@@ -20,12 +20,23 @@ int main(){
     bool flag=false;            //狭義行対角優位行列の判定を1度のみ出力するためのフラグ
     double lside;               //左辺の合計を保存　x[i]==lsideになる 
     double sum=0.0;             //狭義行対角優位を判別するための合計値
+
+    //nを入力
+    cout << "n元連立1次方程式" << endl;
+    cout << "n=:";
+    cin >> n;
+
+    //Aを入力
+    
+
+
+
     for(int i=0; i<n; i++){     //x, x0を初期化
         x[i]=1.0;
         x0[i]=0.0;
     }
 
-    for(int k=0; k<100; k++){    //15回繰り返すfor
+    for(int k=0; k<100; k++){    //100回繰り返すfor
         for(int i=0; i<n; i++){ //収束判定
             if(x[i]<x0[i]-error || x[i]>x0[i]+error)    //収束してなかったら抜ける
                 break;
@@ -55,7 +66,7 @@ int main(){
         cout <<"x"<<i<<"="<< x[i] << endl;
     return 0;   //プログラム終了
 
-    output:
+    output:                 //収束したらここにくる
     for(int i=0; i<n; i++)  //結果を出力
         cout <<"x"<<i<<"="<< x[i] << endl;
     return 0;
