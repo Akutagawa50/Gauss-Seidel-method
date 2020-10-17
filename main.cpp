@@ -1,19 +1,14 @@
 #include <iostream>
-#include <vector>
+#include <iomanip>
 #include <math.h>
 using namespace std;
 
 int n=0;
-
 double x[10];                    
 double x0[10];                   
-
 double A[10][10];
 double b[10];      
-
-
 double error = 0.0001;          //収束判定誤差
-
 int main(){
     bool flag=false;            //狭義行対角優位行列の判定を1度のみ出力するためのフラグ
     double lside;               //左辺の合計を保存　x[i]==lsideになる 
@@ -39,7 +34,6 @@ int main(){
             cin >> b[i];
     }
     cout << endl; //見栄えを気にして改行
-
 
     //x, x0を初期化
     for(int i=0; i<n; i++){     
@@ -80,6 +74,6 @@ int main(){
 
     output:                 //収束したらここにくる
     for(int i=0; i<n; i++)  //結果を出力
-        cout <<"x"<<i<<"="<< x[i] << endl;
+        cout <<"x"<<i<<"="<< fixed << setprecision(10) << x[i] << endl;
     return 0;
 }
