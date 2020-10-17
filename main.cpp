@@ -1,17 +1,15 @@
 #include <iostream>
+#include <vector>
 #include <math.h>
 using namespace std;
 
-int n=3;
-double A[3][3]={               //係数行列A
-    {5, 1, 1},
-    {1, 4, 1},
-    {2, 1, 3}
-};
-double b[3]={10, 12, 13};       //ベクトルb
+int n=0;
 
-double x[3];                    //解ベクトルx
-double x0[3];                   //解ベクトルの1つ前の値を保存する配列
+double x[10];                    
+double x0[10];                   
+
+double A[10][10];
+double b[10];      
 
 
 double error = 0.0001;          //収束判定誤差
@@ -22,20 +20,34 @@ int main(){
     double sum=0.0;             //狭義行対角優位を判別するための合計値
 
     //nを入力
-    cout << "n元連立1次方程式" << endl;
-    cout << "n=:";
+    cout << "n元連立1次方程式(1<n<=10)" << endl;
+    cout << "n=";
     cin >> n;
-
-    //Aを入力
     
+    //Aを入力
+    cout << "係数行列Aを入力" << endl;
+    for(int i=0; i<n; i++){
+        cout << i+1 << "行目:" << endl;
+        for(int j=0; j<n; j++){
+            cin >> A[i][j];
+        }
+    }
+
+    //bを入力
+    cout << "定数項ベクトルbを入力 " << endl;
+    for(int i=0; i<n; i++){
+            cin >> b[i];
+    }
+    cout << endl; //見栄えを気にして改行
 
 
-
-    for(int i=0; i<n; i++){     //x, x0を初期化
+    //x, x0を初期化
+    for(int i=0; i<n; i++){     
         x[i]=1.0;
         x0[i]=0.0;
     }
 
+    //ガウス＝ザイデル法で計算
     for(int k=0; k<100; k++){    //100回繰り返すfor
         for(int i=0; i<n; i++){ //収束判定
             if(x[i]<x0[i]-error || x[i]>x0[i]+error)    //収束してなかったら抜ける
